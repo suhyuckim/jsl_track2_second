@@ -1,0 +1,85 @@
+<?php include "header.html"; ?>
+
+	<div class="sub_title">
+		<h2>갤러리 게시판</h2>
+		<div class="container">
+			<div class="location">
+				<ul>
+					<li class="btn_home"><a href="company01.html"><i class="fa fa-home"></i></a></li>
+					<li class="dropdown">
+						<a href="">PRODUCT<i class="fa fa-plus btn_plus"></i></a>
+						<div class="dropdown_menu">
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+						</div>
+					</li>
+					<li class="dropdown">
+						<a href="">갤러리 게시판<i class="fa fa-plus btn_plus"></i></a>
+						<div class="dropdown_menu">
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="board_list clearfix">
+			<div class="product_dep clearfix">
+				<div class="product_box">
+					<a href="product01_view.html"><img src="images/portfolio01.png"></a>
+					<p>샘플이미지</p>
+				</div>
+				<div class="product_box">
+					<img src="images/portfolio01.png">
+					<p>샘플이미지</p>
+				</div>
+				<div class="product_box mar_right">
+					<img src="images/portfolio01.png">
+					<p>샘플이미지</p>
+				</div>
+			</div>
+			<div class="product_dep clearfix">
+				<div class="product_box">
+					<img src="images/portfolio01.png">
+					<p>샘플이미지</p>
+				</div>
+				<div class="product_box">
+					<img src="images/portfolio01.png">
+					<p>샘플이미지</p>
+				</div>
+				<div class="product_box mar_right">
+					<img src="images/portfolio01.png">
+					<p>샘플이미지</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(function(){
+			$(".location .dropdown>a").on("click",function(e){
+				e.preventDefault();
+				if($(this).next().is(":visible")){
+					$(".location .dropdown > a").next().hide();
+				}else{
+					$(".location .dropdown > a").next().hide();
+					$(this).next().show();
+				}
+			});
+		});
+	</script>
+
+	<?php include "footer.html"; ?>
+ </body>
+
+
+</html>

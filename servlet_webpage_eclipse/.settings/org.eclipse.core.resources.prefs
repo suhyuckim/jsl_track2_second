@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//WebContent/common/common_footer.jsp=UTF-8
+encoding//WebContent/common/common_header.jsp=UTF-8
+encoding//WebContent/common/sessionCheckManager.jsp=UTF-8
+encoding//WebContent/index/index.jsp=UTF-8
+encoding//WebContent/news/news_list.jsp=UTF-8
+encoding//WebContent/news/news_update.jsp=UTF-8
+encoding//WebContent/news/news_view.jsp=UTF-8
+encoding//WebContent/news/news_write.jsp=UTF-8
+encoding//WebContent/notice/notice_list.jsp=UTF-8
+encoding//WebContent/notice/notice_update.jsp=UTF-8
+encoding//WebContent/notice/notice_view.jsp=UTF-8
+encoding//WebContent/notice/notice_write.jsp=UTF-8

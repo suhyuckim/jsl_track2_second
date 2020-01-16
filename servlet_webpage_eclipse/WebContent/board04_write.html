@@ -1,0 +1,97 @@
+<?php include "header.html"; ?>
+
+	<div class="sub_title">
+		<h2>1:1 상담</h2>
+		<div class="container">
+			<div class="location">
+				<ul>
+					<li class="btn_home"><a href="company01.html"><i class="fa fa-home"></i></a></li>
+					<li class="dropdown">
+						<a href="">BOARD<i class="fa fa-plus btn_plus"></i></a>
+						<div class="dropdown_menu">
+							<a href="company01.html">COMPANY</a>
+							<a href="business01.html">BUSINESS</a>
+							<a href="product01.html">PRODUCT</a>
+							<a href="board01.html">BOARD</a>
+							<a href="shop01.html">SHOP</a>
+						</div>
+					</li>
+					<li class="dropdown">
+						<a href="board04.html">FAQ<i class="fa fa-plus btn_plus"></i></a>
+						<div class="dropdown_menu">
+							<a href="board01.html">공지사항</a>
+							<a href="board02.html">이용후기</a>
+							<a href="board03.html">1:1 상담</a>
+							<a href="board04.html">FAQ</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="write_wrap">
+		<h2 class="sr-only">글쓰기</h2>
+			<form name="faq" method="post" action="board04_insert.html" onsubmit="return check()">
+			<!-- action을 처리하기 전에 check()사용자 함수를 실행하고 되돌아 와라-->
+			<div class="board_list">
+				<table class="board_table">
+					<caption class="sr-only">공지사항 입력 표</caption>
+					<colgroup>
+						<col width="20%">
+						<col width="*">
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>질문</th>
+							<th><input type="text" name="title"></th>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<th><textarea name="contents"></textarea></th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="btn_wrap">
+				<input type="submit" value="저장" class="btn_ok">&nbsp;&nbsp;
+				<input type="reset" value="다시쓰기" class="btn_reset">&nbsp;&nbsp;
+				<input type="button" value="목록" class="btn_list" onClick="location.href='board04.html';">
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function check(){
+			if(notice.title.value==""){
+				alter("제목을 입력");
+				notice.title.focus();
+				return false;
+			}
+			if(notice.contents.value=="")}
+				alter("내용을 입력");
+				notice.contents.focus();
+				return false;
+			}
+			return true;
+		}
+	</script>
+	<script>
+		$(function(){
+			$(".location .dropdown>a").on("click",function(e){
+				e.preventDefault();
+				if($(this).next().is(":visible")){
+					$(".location .dropdown > a").next().hide();
+				}else{
+					$(".location .dropdown > a").next().hide();
+					$(this).next().show();
+				}
+			});
+		});
+	</script>
+
+	<?php include "footer.html"; ?>
+ </body>
+
+
+</html>

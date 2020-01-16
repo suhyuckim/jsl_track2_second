@@ -1,0 +1,89 @@
+<?php include "header.html"; ?>
+
+	<div class="sub_title">
+		<h2>1:1 상담</h2>
+		<div class="container">
+			<div class="location">
+				<ul>
+					<li class="btn_home"><a href="company01.html"><i class="fa fa-home"></i></a></li>
+					<li class="dropdown">
+						<a href="">BOARD<i class="fa fa-plus btn_plus"></i></a>
+						<div class="dropdown_menu">
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+						</div>
+					</li>
+					<li class="dropdown">
+						<a href="">1:1 상담<i class="fa fa-plus btn_plus"></i></a>
+						<div class="dropdown_menu">
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="board_view">
+			<h2>어떤 결혼식 타입을 선호하나요?</h2>
+			<p class="info"><span class="user">관리자</span> | 2018-10-18 | <i class="fa fa-eye"> 400</i>
+			<div class="board_body">
+				<p>1. 펜션/가든 웨딩</p>
+				<p>2. 갤러리 웨딩</p>
+				<p>3. 루프탑 라운지 웨딩</p>
+				<p>4. 식당/카페 웨딩</p>
+				<p><strong>답변</strong></p>
+				<p>저는 가든 웨딩이 좋아요^^</p>
+			</div>
+			<div class="prev_next">
+				<a href="" class="btn_prev">
+					<i class="fa fa-angle-left"></i>
+					<span class="prev_wrap">
+						<strong>이전글</strong>
+						<span>이전글제목표시</span>
+					</span>
+				</a>
+				<div class="btn_3wrap">
+					<a href="board03.html">목록</a> 
+					<a href="board03_modify.html">수정</a> 
+					<a href="board03_delete.html" onClick="return confirm('삭제하시겠어요?')">삭제</a>
+					<a href="board03_reply.html">글쓰기</a>
+				</div>
+				<a href="" class="btn_next">
+					<span class="next_wrap">
+						<strong>다음글</strong>
+						<span>다음글제목표시</span>
+					</span>
+					<i class="fa fa-angle-right"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(function(){
+			$(".location .dropdown>a").on("click",function(e){
+				e.preventDefault();
+				if($(this).next().is(":visible")){
+					$(".location .dropdown > a").next().hide();
+				}else{
+					$(".location .dropdown > a").next().hide();
+					$(this).next().show();
+				}
+			});
+		});
+	</script>
+
+	<?php include "footer.html"; ?>
+ </body>
+
+
+</html>

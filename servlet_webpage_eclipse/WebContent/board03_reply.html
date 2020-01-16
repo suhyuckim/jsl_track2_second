@@ -1,0 +1,95 @@
+<?php include "header.html"; ?>
+
+	<div class="sub_title">
+		<h2>1:1 상담</h2>
+		<div class="container">
+			<div class="location">
+				<ul>
+					<li class="btn_home"><a href="company01.html"><i class="fa fa-home"></i></a></li>
+					<li class="dropdown">
+						<a href="">BOARD<i class="fa fa-plus btn_plus"></i></a>
+						<div class="dropdown_menu">
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+						</div>
+					</li>
+					<li class="dropdown">
+						<a href="">1:1 상담<i class="fa fa-plus btn_plus"></i></a>
+						<div class="dropdown_menu">
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+							<a href="gratomgs/html">비전소개</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="write_wrap">
+		<h2 class="sr-only">질문과 답변 글쓰기</h2>
+			<form name="notice" method="post" action="board03_reply.html">
+			<!-- action을 처리하기 전에 check()사용자 함수를 실행하고 되돌아 와라-->
+			<div class="board_list">
+				<table class="board_table">
+					<caption class="sr-only">공지사항 입력 표</caption>
+					<colgroup>
+						<col width="12%">
+						<col width="*">
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>글쓴이</th>
+							<th>아무개</th>
+						</tr>
+						<tr>
+							<th>제목</th>
+							<th>결혼 타입</th>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<th>어떤 결혼 타입을 선호하나요?</th>
+						</tr>
+						<tr>
+							<th>답변</th>
+							<th><textarea name="reply"></textarea></th>
+						</tr>
+						<tr>
+							<th>첨부</th>
+							<th><img src="" alt=""></th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="btn_wrap">
+				<input type="submit" value="저장" class="btn_ok">&nbsp;&nbsp;
+				<input type="reset" value="다시쓰기" class="btn_reset">&nbsp;&nbsp;
+				<input type="button" value="목록" class="btn_list" onClick="location.href='board03.html';">
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(function(){
+			$(".location .dropdown>a").on("click",function(e){
+				e.preventDefault();
+				if($(this).next().is(":visible")){
+					$(".location .dropdown > a").next().hide();
+				}else{
+					$(".location .dropdown > a").next().hide();
+					$(this).next().show();
+				}
+			});
+		});
+	</script>
+
+	<?php include "footer.html"; ?>
+ </body>
+
+
+</html>
