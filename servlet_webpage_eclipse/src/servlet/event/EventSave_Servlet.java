@@ -76,7 +76,7 @@ public class EventSave_Servlet extends HttpServlet {
 			String reg_id 	= mpr.getParameter("writer");	
 			int hit 		= 0;
 			
-			Event_DTO event_dto = new Event_DTO(event_no, title, content, reg_id, reg_date, reg_start, reg_end, hit);
+			Event_DTO event_dto = new Event_DTO(event_no, title, content, reg_id, reg_date, reg_start, reg_end, saveFileName, hit);
 			int result = dao.insertEvent_servlet(event_dto);
 			
 			if(result > 0) {

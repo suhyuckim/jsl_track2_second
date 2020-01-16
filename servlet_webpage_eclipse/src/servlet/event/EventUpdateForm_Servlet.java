@@ -1,4 +1,4 @@
-package servlet.notice;
+package servlet.event;
 
 import java.io.IOException;
 
@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.Notice_DAO;
-import dto.Notice_DTO;
+import dao.Event_DAO;
+import dto.Event_DTO;
 
 /**
- * Servlet implementation class NoticeUpdateForm_Servlet
+ * Servlet implementation class EventUpdateForm_Servlet
  */
-@WebServlet("/NoticeUpdateForm_Servlet")
-public class NoticeUpdateForm_Servlet extends HttpServlet {
+@WebServlet("/EventUpdateForm_Servlet")
+public class EventUpdateForm_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeUpdateForm_Servlet() {
+    public EventUpdateForm_Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,14 +43,17 @@ public class NoticeUpdateForm_Servlet extends HttpServlet {
 			request.setAttribute("url", url);
 			dispatcher = request.getRequestDispatcher("/common/view_messageAlert.jsp");
 		} else {
-			Notice_DAO dao = new Notice_DAO();
-			String notice_no = request.getParameter("t_notice_no");
-			Notice_DTO dto = dao.getNoticeView_serlvet(notice_no);
+			Event_DAO dao = new Event_DAO();
+			String event_no = request.getParameter("t_event_no");
+			Event_DTO dto = dao.getEventView_servlet(event_no);
 			request.setAttribute("t_dto", dto);
-			dispatcher = request.getRequestDispatcher("/notice/notice_update.jsp");
+			dispatcher = request.getRequestDispatcher("/event/event_update.jsp");
 		}
 		dispatcher.forward(request, response);
 	}
+	/**
+	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -9,6 +9,7 @@
   <meta name="Description" content="응용sw개발자를 위한 반응형 홈페이지">
   <title>간바테 일본어</title>
   <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/common.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"> <!-- i태그로 fontawesome 넣어주기 -->
   <link href="css/font-awesome.min.css" rel="stylesheet"> <!-- css으로 fontawesome 넣어주기 -->
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.CommonUtil;
+
 /**
  * Servlet implementation class EventWriteForm_Servlet
  */
@@ -28,6 +30,8 @@ public class EventWriteForm_Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String reg_date = CommonUtil.getToday();
+		request.setAttribute("reg_date", reg_date);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/event/event_write.jsp");
 		dispatcher.forward(request, response);
 	}

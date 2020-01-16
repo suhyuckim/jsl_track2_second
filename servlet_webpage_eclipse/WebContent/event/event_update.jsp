@@ -11,6 +11,7 @@
 		<div class="write_wrap">
 		<h2 class="sr-only">이벤트 글쓰기</h2>
 			<form name="event_check" enctype="multipart/form-data">
+			<input type="hidden" name="t_event_no"  value="${t_dto.getEvent_no()}">
 			<div class="board_list">
 				<table class="board_table">
 					<caption class="sr-only">공지사항 입력 표</caption>
@@ -25,22 +26,32 @@
 						</tr>
 						<tr>
 							<th>제목</th>
-							<th><input type="text" name="t_title"></th>
+							<th><input type="text" name="t_title" value="${t_dto.getTitle()}"></th>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<th><textarea name="contents"></textarea></th>
+							<th><textarea name="contents">${t_dto.getContent()}</textarea></th>
 						</tr>
 						<tr>
 							<th>이벤트 기간</th>
 							<th>
 								<input type="hidden" name="t_date">
-								<input type="date" name="start_date" class="start_date"> ~ <input type="date" name="end_date">
+								<input type="date" name="start_date" class="start_date" value="${t_dto.getStart_date()}">~<input type="date" name="end_date" value="${t_dto.getEnd_date()}">
 							</th>
 						</tr>						
 						<tr>
 							<th>첨부</th>
-							<th><input type="file" name="fileName_a" class="file" id="file"></th>
+							<th>
+							<c:if test="${t_dto.getFile_name_1() ne null}">
+								<a href="/common/filedown.jsp?t_file=${t_dto.getFile_name_1()}&t_gubun=notice">${t_dto.getFile_name_1()}</a>
+								&nbsp;&nbsp;파일삭제
+								<input type="checkbox" name="checkBox_del_fileName" value="${t_dto.getFile_name_1()}">
+								<br>
+							</c:if>	
+								<br>
+								<input type="file" name="fileName_a">
+								<input type="hidden" name="ori_fileName_a" value="${t_dto.getFile_name_1()}">
+							</th>
 						</tr>
 					</tbody>
 				</table>
@@ -130,7 +141,7 @@
 				return;
 				}
 			}
-			event_check.action = "/EventSave_Servlet";
+			event_check.action = "/EventUpdate_Servlet";
 			event_check.method = "post";
 			event_check.submit();
 		}

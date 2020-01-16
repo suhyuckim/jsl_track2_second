@@ -37,8 +37,9 @@
 					<col width="10%">					
 					<col width="*">
 					<col width="10%">
+					<col width="5%">
 					<col width="10%">
-					<col width="25%">						
+					<col width="20%">						
 					<col width="7%">
 					<c:if test="${session_id eq 'manager'}">						
 						<col width="7%">
@@ -48,6 +49,7 @@
 					<tr>
 						<th scope="col">번호</th>
 						<th scope="col">제목</th>
+						<th scope="col">첨부</th>
 						<th scope="col">작성자</th>
 						<th scope="col">작성일</th>
 						<th scope="col">이벤트 기간</th>
@@ -67,9 +69,14 @@
 										<td><a href=javascript:EventView_Servlet("${dtos.getEvent_no()}")>${dtos.getEvent_no()}</a></td>
 										<td class="title">
 											<a href=javascript:EventView_Servlet("${dtos.getEvent_no()}")>${dtos.getTitle()}</a></td>
+										<td>
+											<c:if test="${dtos.getFile_name_1() ne null}">
+												<i class="far fa-save"></i>
+											</c:if>
+										</td>
 										<td>${dtos.getReg_id()}</td>
 										<td>${dtos.getReg_date()}</td>
-										<td>${dtos.getStart_date()} ~ ${dtos.getEnd_date()}</td>
+										<td>${dtos.getStart_date()}~${dtos.getEnd_date()}</td>
 										<td>${dtos.getHit()}</td>
 										<c:if test="${session_id eq 'manager'}">
 											<td><a href="/event/event_s.jsp?t_eventNo=${dtos.getEvent_no()}" class="management"><span>관리</span></a></td>

@@ -57,7 +57,7 @@ public class EventList_Servlet extends HttpServlet {
 		int			total_page;						// 총페이지 수
 		int			total_count;					// 총레코드 수
 		int			for_count;						
-		int			list_setup_count = 1;			// 한번에 출력될 List 수, 한페이지당 몇줄 보여줄것인지
+		int			list_setup_count = 5;			// 한번에 출력될 List 수, 한페이지당 몇줄 보여줄것인지
 		int			p_no;
 		int			v_count;
 		int			a_count;
