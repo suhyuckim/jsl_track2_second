@@ -1,0 +1,146 @@
+class CommonUtil{
+	// null 검사
+	public static String checkNull(String sValue){
+		String result="";
+		if(sValue != null) result = sValue;
+		return result;
+	}
+	// 페이지
+	public static String pageList(int current_page,int totalpage, String list_url){
+		int pagenumber;    //화면에 보여질 페이지 인덱스수
+		int startpage;     //화면에 보여질 시작 페이지 번호
+		int endpage;       //화면에 보여질 마지막 페이지 번호
+		int curpage;       //이동하고자 하는 페이지 번호
+		
+		String strList=""; //리턴될 페이지 인덱스 리스트
+		
+		pagenumber = 2;   //한 화면의 페이지 인덱스수
+		
+		//시작 페이지 번호 구하기
+		startpage = ((current_page - 1)/ pagenumber) * pagenumber + 1;
+		//마지막 페이지 번호 구하기
+		endpage = (((startpage -1) + pagenumber) / pagenumber)*pagenumber;
+		//총페이지수가 계산된 마지막 페이지 번호보다 작을 경우
+		//총페이지수가 마지막 페이지 번호가 됨
+		
+		if(totalpage <= endpage)  endpage = totalpage;
+					
+		//첫번째 페이지 인덱스 화면이 아닌경우
+		if(current_page > pagenumber){
+			curpage = startpage -1;  //시작페이지 번호보다 1적은 페이지로 이동
+			strList = strList +"<a href='"+list_url+"&r_page="+curpage+"'><i class='fa fa-angle-double-left'></i></a>";
+		}
+						
+		//시작페이지 번호부터 마지막 페이지 번호까지 화면에 표시
+		curpage = startpage;
+		while(curpage <= endpage){
+			if(curpage == current_page){
+				strList = strList +"<a href='' class='active'>["+current_page+"]</a>";
+			} else {
+				strList = strList +"<a href='"+list_url+"&r_page="+curpage+"'><font color=#666699>["+curpage+"]</font></a>";
+			}
+			curpage++;
+		}
+		//뒤에 페이지가 더 있는 경우
+		if(totalpage > endpage){
+			curpage = endpage+1;
+			strList = strList + "<a href='"+list_url+"&r_page="+curpage+"'><i class='fa fa-angle-double-right'></i></a>";
+		}
+		
+		return strList;
+	}	
+}	
+
+
+//***************************************************************************************//
+	// 000000_r.jsp 상단에 설정
+	String tdCount ="5";				
+
+	String r_page = CommonUtil.checkNull(request.getParameter("r_page"));		
+	int			current_page;					// 현재페이지 번호
+	int			total_page;						// 총페이지 수
+	int			total_count;					// 총레코드 수
+	int			for_count;						
+	int			list_setup_count = 3;			// 한번에 출력될 List 수
+	int			p_no;
+	int			v_count;
+	int			a_count;
+	String		url				= null;	
+
+	// 조회된 건수 구하기  total_count : 설정
+	if(dtos == null) total_count =0;
+	else total_count = dtos.size(); 
+
+
+	// 페이지번호가 없으면 1페이지로 간주
+	if(r_page.equals("")) current_page = 1;
+	else current_page = Integer.parseInt(r_page);
+		
+	for_count		= list_setup_count;
+	p_no			= list_setup_count;				// 페이지수가 10
+	total_page = total_count / list_setup_count;		// 전체페이지수 계산 (if 23개 게시물이면 2)
+   
+	if(current_page == 1) {
+		v_count		= 0;
+		a_count		= list_setup_count;
+		for_count	= 0;
+	} else{
+		v_count		= 0;
+		a_count		= p_no * current_page;
+		for_count	= a_count - list_setup_count;
+	}
+	if(total_page * list_setup_count != total_count)   total_page = total_page +1;
+~
+~
+~
+~
+~
+~
+~
+			<tbody>
+<%	if ( total_count > 0 ){
+		for(int k = 0 ; k < total_count ; k++ )	{
+			if(v_count == for_count){ 
+
+%> 			
+
+				<tr>
+					<td><a href="notice_v.jsp?t_notice_no=<%=dtos.get(k).getNotice_no()%>"><%=dtos.get(k).getNotice_no()%></a></td>
+					<td class="title">
+						<a href="notice_v.jsp?t_notice_no=<%=dtos.get(k).getNotice_no()%>"><%=dtos.get(k).getTitle()%></a></td>
+					<td><%=dtos.get(k).getReg_id()%></td>
+					<td><%=dtos.get(k).getReg_date()%></td>
+					<td><%=dtos.get(k).getHit()%></td>
+				</tr>
+<%
+				v_count = v_count + 1;
+				for_count = for_count + 1;
+			}else { 
+				v_count = v_count + 1;
+			}
+
+			if(v_count == a_count)break; 
+
+		}
+	}else{	
+%>
+   <TR align="center" bgcolor="white" >
+       <TD colspan="<%=tdCount%>" >등록된 내용이 없습니다.</TD>
+   </TR>
+<%	} %> 			
+			</tbody>
+		</table>
+		<div class="paging">
+<%
+			url = "notice_r.jsp?t_sel="+selValue+"&t_search="+txtValue;		
+			out.println(CommonUtil.pageList(current_page, total_page, url));
+%>		
+		
+			<a href="notice_w.jsp" class="btn_write">글쓰기</a>
+		</div>
+	
+	
+	
+	
+	
+	

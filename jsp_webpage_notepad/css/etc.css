@@ -1,0 +1,40 @@
+/* menu css */
+#menu li a{
+	font-size : 14px;
+	color : black;
+	line-height : 30px;
+	font-weight : bold ;
+}
+#menu li {
+	border-bottom : 1px dotted black ;
+}
+
+/* footer css */
+#footer{
+	background : #42464d ;
+	padding-top : 10px ;
+	padding-bottom : 10px ;
+}
+#footer .address {
+	color : #ababb1;
+	margin-bottom : 10px;
+}
+#footer .address .title{
+	font-size : 14px ;
+	margin-bottom : 8px;
+	color : #fff;
+}
+#footer .copyright {
+	color : #fff ;
+}
+/* paging */
+.paging {padding-top:30px; text-align:center;}
+.paging a  {margin:3px; padding:10px; border:1px solid #e0e0e0;}
+.paging a.active {background:#42464d; color:#fff;}
+
+.paging .btn_write {
+	background:#42464d; 
+	padding:10px 16px; 
+	color:#fff; 
+	float:right;
+}

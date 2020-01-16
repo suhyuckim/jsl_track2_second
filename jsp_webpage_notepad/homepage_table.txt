@@ -1,0 +1,10 @@
+// 공지사항
+CREATE TABLE a00_track2_web_notice(
+notice_no VARCHAR2(7) not null, 
+title VARCHAR2(60) not null,
+contents VARCHAR2(2000) not null,
+file_name_1 varchar(50),
+reg_id  VARCHAR2(20) not null,
+reg_date date not null,
+hit  number(6) default 0,
+CONSTRAINT pk_a00_track2_notice PRIMARY KEY(notice_no))
