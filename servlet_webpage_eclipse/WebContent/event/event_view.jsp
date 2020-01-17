@@ -15,7 +15,7 @@
 				<p>이벤트 기간 : ${t_dto.getStart_date()}~${t_dto.getEnd_date()}<p>
 				<p>${t_dto.getContent()}</p>
 				<c:if test="${t_dto.getFile_name_1() ne null}">
-				<p><i class="fas fa-file-archive fa-lg"></i>&nbsp;
+				<p><i class="far fa-file-archive"></i>&nbsp;
 				<a href="/common/filedown.jsp?t_file=${t_dto.getFile_name_1()}&t_gubun=event">${t_dto.getFile_name_1().substring(8)}</a>
 				</p>
 				</c:if>
@@ -34,6 +34,7 @@
 					<a href=javascript:EventUpdateForm_Servlet("${t_dto.getEvent_no()}")>수정</a> 
 					<a href="javascript:EventDelete_Servlet()">삭제</a>
 				</c:if>	
+					<a href=javascript:EventApplyForm_Servlet("${t_dto.getEvent_no()}")>신청</a>
 				</div>
 	</form>			
 				<a href="" class="btn_next">
@@ -76,6 +77,14 @@
 				fm.method = "post";
 				fm.submit();
 			}
+		}
+		
+		function EventApplyForm_Servlet(event_apply){
+			var fm = document.event_view;
+			fm.t_event_no.value = event_apply;
+			fm.action = "/EventApplyForm_Servlet";
+			fm.method = "post";
+			fm.submit();
 		}
 	</script>
 	<%@ include file="/common/common_footer.jsp" %>

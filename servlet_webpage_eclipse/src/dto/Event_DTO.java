@@ -4,7 +4,8 @@ public class Event_DTO {
 	String event_no, title, content, reg_id, reg_date, start_date, end_date, file_name_1;
 	int hit;
 	public Event_DTO() {}
-	public Event_DTO(String event_no, String title, String content, String reg_id, String reg_date, String start_date,
+	public Event_DTO(String event_no, String title, String content, 
+			String reg_id, String reg_date, String start_date,
 			String end_date, String file_name_1, int hit) { //이벤트 등록 file_name_1 추가
 		super();
 		this.event_no = event_no;

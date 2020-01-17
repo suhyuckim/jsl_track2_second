@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 	<div class="sub_title">
-		<h2>EVENT write</h2>
+		<h2>EVENT update</h2>
 			<%@ include file="/common/common_menu.jsp" %>
 	</div>
 	<div class="container">
