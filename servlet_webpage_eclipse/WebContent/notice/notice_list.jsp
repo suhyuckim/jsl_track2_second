@@ -2,6 +2,32 @@
 <%@ include file="/common/common_header.jsp" %>
 <%@ page import="common.CommonUtil"%>
 <!DOCTYPE html>
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function(){
+    	$("#btnCheck").click(function(){  
+    	    var urlLocation="/EventIDCheck";  
+    	    var params="id="+ $('#t_id').val();  
+		        $.ajax({
+		            type : "POST",
+		            url : urlLocation,
+		            data:params,
+		            dataType : "json", //return type은 json
+		            error : function(){
+		                alert('통신실패!!');
+		            },
+		            success : function(data){
+//		                alert("통신데이터 값 : " + data);
+	                	$("#s_name").html(data.t_name2); //넘어온 data가 json이기 때문에 이런식으로 지정한다 (t_name에는 홍길동이 들어있다).
+	                	$("#s_addr").html(data.t_addr2); 
+		            }
+		       });
+    	 });
+    });
+</script>
+
 <html lang="ko">
 	<div class="sub_title" >
 		<h2>NOTICE list</h2>
@@ -13,7 +39,15 @@
 		<div class="search_wrap">
 			<div class="record_group">
 				<p>총게시글 <span>${NoticeCount}</span>건</p>
+			</div>
+			<br>
+			<div>
+				id : <input type="text" id="t_id" size="5"> 
+				<input type="button" value="id 검사" id="btnCheck">
+				<span id="s_name">[1]</span>
+				<span id="s_addr">[2]</span>
 			</div>	
+			
 				<form name="notice">
 						<div class="search_group">
 						<input type="hidden" name="r_page">
