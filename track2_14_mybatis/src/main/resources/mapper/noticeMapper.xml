@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.NoticeDao">
+<!-- 	
+	<select id="getNoticeList_1" resultType="dto.NoticeVO">
+		select a.no, a.title, b.name as reg_info, to_char(a.reg_date, 'yyyy-MM-dd') as reg_date, a.hit
+		from track2_14_notice a, track2_14_member b
+		where a.reg_id = b.id
+		order by no desc
+	</select> 
+-->
+	<select id="getNoticeList_2" resultType="dto.NoticeVO" parameterType="map">
+		select a.no, a.title, b.name as reg_info, to_char(a.reg_date, 'yyyy-MM-dd') as reg_date, a.hit
+		from track2_14_notice a, track2_14_member b
+		where a.reg_id = b.id
+		and ${t_sel} like '%${t_sea}%'
+		order by no desc
+	</select>
+	
+	<select id="getNoticeList_3" resultType="dto.NoticeVO" parameterType="string">
+		select a.no, a.title, b.name as reg_info, to_char(a.reg_date, 'yyyy-MM-dd') as reg_date, a.hit
+		from track2_14_notice a, track2_14_member b
+		where a.reg_id = b.id
+		and ${s_select} like '%${s_search}%'
+		order by no desc
+	</select>
+	
+	<!-- 번호 조회 -->
+	<select id="getMaxNo" resultType="string">
+		select max(no) from track2_14_notice
+	</select>
+	
+	<!-- 등록  values('${m_no}', '${m_title}','${m_content}','${m_reg_id}','${m_reg_date}') -->
+	<insert id="noticeSave" parameterType="map">
+		insert into track2_14_notice(no, title, content, reg_id, reg_date)
+		values(#{m_no}, #{m_title}, #{m_content}, #{m_reg_id}, #{m_reg_date})
+	</insert>
+	
+	<!-- 상세조회 -->
+	<select id="getNoticeView_1" resultType="dto.NoticeVO" parameterType="string">
+		select a.no, a.title, a.content, b.name as reg_info, to_char(a.reg_date, 'yyyy-MM-dd') as reg_date, a.hit
+		from track2_14_notice a, track2_14_member b
+		where a.reg_id = b.id
+		and a.no = #{noti}
+	</select>
+	
+	<select id="getNoticeView_2" resultType="dto.NoticeVO" parameterType="string">
+		select a.no, a.title, a.content, b.name as reg_info, to_char(a.reg_date, 'yyyy-MM-dd') as reg_date, a.hit,
+		update_id, to_char(a.update_date, 'yyyy-MM-dd') as update_date
+		from track2_14_notice a, track2_14_member b
+		where a.reg_id = b.id
+		and a.no = #{no}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="noticeHit" parameterType="string">
+		update track2_14_notice set hit = hit+1
+		where no = #{no}
+	</update>
+	
+	<!-- 이전글, 다음글 -->
+	<select id="getNextPrev" resultType="dto.NextPrevVO" parameterType="string"> 
+ 		SELECT  
+		     a.nextNo, substr(a.nextTitle,0,10) as nextTitle, 
+		     a.prevNo, substr(a.prevTitle,0,10) as prevTitle
+		 FROM ( 
+		     SELECT NO, TITLE, 
+		         LEAD(NO, 1) OVER (ORDER BY NO DESC) AS nextNo, 
+		         LEAD(TITLE, 1) OVER (ORDER BY NO DESC) AS nextTitle, 
+		         LAG(NO, 1) OVER (ORDER BY NO DESC) AS prevNo, 
+		         LAG(TITLE, 1) OVER (ORDER BY NO DESC) AS prevTitle 
+		     FROM track2_14_notice 
+		 ) A 
+		 where a.no = #{NO}
+	</select>
+	
+	<!-- 수정 -->
+	<update id="noticeUpdate" parameterType="map">
+		update track2_14_notice 
+		set title = #{m_title}, 
+			content = #{m_content}, 
+			update_id = #{m_update_id}, 
+			update_date = #{m_update_date}
+			where no = #{m_no}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="noticeDelete" parameterType="string">
+		delete from track2_14_notice where no = #{m_no}
+	</delete>
+</mapper>

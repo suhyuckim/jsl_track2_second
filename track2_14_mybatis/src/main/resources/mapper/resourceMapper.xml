@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.ResourceDao">
+	
+<!-- 목록조회 -->
+	<select id="getResourceList_2" resultType="dto.ResourceVO" parameterType="map">
+		select a.no, a.title, a.file_1, a.file_2, b.name as reg_info, 
+		to_char(a.reg_date,'yyyy-MM-dd') as reg_date, a.hit 
+		from track2_14_resource a, track2_14_member b
+		where a.reg_id = b.id
+		and ${t_sel} like '%${t_sea}%'
+		order by a.no desc		
+	</select>	
+	
+	<select id="getResourceList" resultType="dto.ResourceVO">
+		select a.no, a.title, a.file_1, a.file_2, b.name as reg_info, 
+		to_char(a.reg_date,'yyyy-MM-dd') as reg_date, a.hit 
+		from track2_14_resource a, track2_14_member b
+		where a.reg_id = b.id
+		order by a.no desc		
+	</select>	
+	
+<!-- 번호 생서 -->
+ 	<select id="getMaxNo" resultType="string">
+		select max(no) from track2_14_resource
+	</select>
+	
+<!-- 등록 -->	
+	<insert id="resourceSave" parameterType="map">
+		insert into track2_14_resource
+		(no, title, content, file_1, file_2, reg_id, reg_date)
+		values
+		(#{t_no},#{t_title},#{t_content},#{t_file_1},#{t_file_2},#{t_reg_id},#{t_reg_date})
+	</insert>
+	
+<!-- 상세조회 -->	
+	<select id="getResourceView" resultType="dto.ResourceVO" parameterType="string">
+		select a.no, a.title, a.content, a.file_1, a.file_2, 
+        b.name as reg_info, to_char(a.reg_date,'yyyy-MM-dd') as reg_date, 
+        c.name as update_info, to_char(a.update_date,'yyyy-MM-dd') as update_date, 
+        a.hit 
+		from track2_14_resource a, track2_14_member b, track2_14_member c
+		where a.reg_id = b.id
+        and a.update_id = c.id(+)
+		and a.no = #{no}
+	</select>
+	
+<!-- 수정 -->	
+	<update id="resourceUpdate" parameterType="map">
+		update track2_14_resource
+		set title = #{t_title},
+   			content = #{t_content},
+   			file_1 = #{t_file_1},
+    		file_2 = #{t_file_2},
+		    update_id = #{t_update_id},
+		    update_date = #{t_update_date}
+		where no = #{t_no}
+	</update>
+</mapper>

@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/main/java/common/CommonUtil.java=UTF-8
+encoding//src/main/java/common/DBConnectionOracle.java=UTF-8
+encoding//src/main/java/common/FileUploadService.java=UTF-8
+encoding//src/main/java/dao/Faq_dao.java=UTF-8
+encoding//src/main/java/dao/News_dao.java=UTF-8
+encoding//src/main/java/dao/Notice_dao.java=UTF-8
